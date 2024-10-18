@@ -141,10 +141,10 @@ else(IS_ABSOLUTE "${INCLUDE_INSTALL_DIR}")
 endif(IS_ABSOLUTE "${INCLUDE_INSTALL_DIR}")
 
 configure_file(mailio.pc.in ${CMAKE_BINARY_DIR}/mailio.pc IMMEDIATE @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/mailio.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+#install(FILES ${CMAKE_BINARY_DIR}/mailio.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
 
 configure_file(${PROJECT_SOURCE_DIR}/include/version.hpp.in version.hpp)
-install(FILES ${CMAKE_BINARY_DIR}/version.hpp DESTINATION ${INCLUDE_INSTALL_DIR}/${PROJECT_NAME})
+#install(FILES ${CMAKE_BINARY_DIR}/version.hpp DESTINATION ${INCLUDE_INSTALL_DIR}/${PROJECT_NAME})
 
 # generate the export header for exporting symbols
 # this is needed to generate a shared library.
@@ -155,7 +155,7 @@ target_include_directories(${PROJECT_NAME}
         "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${CMAKE_CURRENT_BINARY_DIR}>"
         "$<INSTALL_INTERFACE:include>"
 )
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/export.hpp DESTINATION "${INCLUDE_INSTALL_DIR}/${PROJECT_NAME}")
+#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/export.hpp DESTINATION "${INCLUDE_INSTALL_DIR}/${PROJECT_NAME}")
 
 if(Boost_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
@@ -177,7 +177,7 @@ else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
-install(DIRECTORY include/mailio DESTINATION ${INCLUDE_INSTALL_DIR})
+#install(DIRECTORY include/mailio DESTINATION ${INCLUDE_INSTALL_DIR})
 
 install(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Config
@@ -188,7 +188,7 @@ install(TARGETS ${PROJECT_NAME}
 
 export(TARGETS ${PROJECT_NAME} FILE ${PROJECT_NAME}Config.cmake)
 
-install(EXPORT ${PROJECT_NAME}Config DESTINATION share/${PROJECT_NAME}/cmake)
+#install(EXPORT ${PROJECT_NAME}Config DESTINATION share/${PROJECT_NAME}/cmake)
 
 # optionally build examples
 if(${MAILIO_BUILD_EXAMPLES})
